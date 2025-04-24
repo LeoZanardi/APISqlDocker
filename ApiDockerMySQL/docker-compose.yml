@@ -2,7 +2,7 @@ version: "3.8"
 services:
   apiusersmysql:
     build: .
-    container_name: "APIsDocker"
+    container_name: "APIDockerSQL"
     depends_on:
       - mysql
     ports:

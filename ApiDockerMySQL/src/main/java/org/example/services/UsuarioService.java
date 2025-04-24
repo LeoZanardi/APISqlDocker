@@ -13,12 +13,14 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario save(Usuario usuario){
+    public Usuario save(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
-    public List<Usuario> findAll(){
+
+    public List<Usuario> findAll() {
         return usuarioRepository.findAll();
     }
+
     public Optional<Usuario> findById(Long id) {
         return usuarioRepository.findById(id);
     }
@@ -27,4 +29,10 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
 
+    public Optional<Usuario> update(Long id, Usuario usuario) {
+        return usuarioRepository.findById(id).map(existing -> {
+            usuario.setId(id);
+            return usuarioRepository.save(usuario);
+        });
+    }
 }
